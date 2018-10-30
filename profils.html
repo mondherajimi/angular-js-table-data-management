@@ -1,0 +1,47 @@
+<div class="wrapper" ng-controller="MainController">
+  
+  <div class="container">
+    
+<div class="col-xs-12">
+ 
+  <div class="row">
+    <div class="col-md-12 margin-tb">
+      <div class="pull-left">
+        <h1>Liste des Utilisateurs</h1>
+      </div>
+    </div>
+  </div>
+		  <label>Recherche Générale <input ng-model="search.$"></label> <br>
+		  <label>Recherche Last Name <input ng-model="search.lastname"></label><br>
+		  <label>Recherche First Name <input ng-model="search.firstname"></label><br>        
+    <div class="table-responsive">      
+    <table class="employeeGrid table-striped table-bordered table-hover table-condensed">
+      <thead>
+        <tr>
+          <th></th>
+          <th><a href="" ng-click="orderByField='lastname'; reverseSort = !reverseSort">last Name</a></th>
+          <th><a href="" ng-click="orderByField='firstname'; reverseSort = !reverseSort">first Name</a></th>
+          <th><a href="" ng-click="orderByField='balance'; reverseSort = !reverseSort">Balance</a></th>
+          <th></th>		  
+        </tr>
+      </thead>
+      <tbody>      
+        <tr class="clickableRow" ng-repeat-start="item in items | orderBy:orderByField:reverseSort | filter:search">
+          <td><img src="{{item.picture}}" /></td>
+          <td>{{item.lastname}}</td>
+          <td>{{item.firstname}}</td>
+          <td>{{item.balance}}</td>
+		  <td><input type="button" value="Get Details" ng-click="Details($index)" /></td>
+        </tr>
+        <tr ng-repeat-end ng-show>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>       
+    </div>
+  
+  <br/><br/><br/><br/><br/>
+ 
+</div>
+</div>
+</div>
